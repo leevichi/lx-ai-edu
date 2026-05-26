@@ -24,24 +24,26 @@ export function HeroTitleBanner({
 
   if (useTextFallback) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55 }}
-        className="hero-title-fallback px-5 py-16 md:py-20"
-      >
-        <p className="text-sm font-bold tracking-[0.2em] text-cyan-400 uppercase md:text-base">
-          Spatial Information and Artificial Intelligence
-        </p>
-        <h1
-          className={`${paperlogyBlack.className} mt-4 text-3xl leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl`}
+      <HeroTitleInteractive className="hero-title-banner">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="hero-title-fallback px-5 py-16 md:py-20"
         >
-          지역과 성장하는 교육
-        </h1>
-        <p className="mt-3 text-2xl font-extrabold tracking-wide text-white md:text-3xl">
-          LX EDUCATION
-        </p>
-      </motion.div>
+          <p className="text-sm font-bold tracking-[0.2em] text-cyan-400 uppercase md:text-base">
+            Spatial Information and Artificial Intelligence
+          </p>
+          <h1
+            className={`${paperlogyBlack.className} mt-4 text-3xl leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl`}
+          >
+            지역과 성장하는 교육
+          </h1>
+          <p className="mt-3 text-2xl font-extrabold tracking-wide text-white md:text-3xl">
+            LX EDUCATION
+          </p>
+        </motion.div>
+      </HeroTitleInteractive>
     );
   }
 

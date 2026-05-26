@@ -46,6 +46,8 @@ body {
 .hero-title-interactive-inner {
   will-change: transform;
   transition: transform 0.35s ease-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .hero-title-banner-img {

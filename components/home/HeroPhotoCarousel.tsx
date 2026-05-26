@@ -57,31 +57,28 @@ export function HeroPhotoCarousel() {
   }, []);
 
   useEffect(() => {
-    if (paused || reduceMotion) return;
+    if (paused) return;
     const timer = window.setInterval(() => {
       setIndex((prev) => (prev + 1) % SLIDES.length);
     }, INTERVAL_MS);
     return () => window.clearInterval(timer);
-  }, [paused, reduceMotion]);
+  }, [paused]);
 
   const slide = SLIDES[index];
+  const slideDuration = reduceMotion ? 0 : 0.45;
 
   return (
     <div className="hero-frame w-full max-w-lg lg:max-w-none">
-      <div
-        className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] bg-slate-100"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] bg-slate-100">
         <AnimatePresence mode="wait">
           <motion.img
             key={slide.id}
             src={slide.image}
             alt={slide.alt}
-            initial={{ opacity: 0, x: 48, scale: 1.04 }}
+            initial={{ opacity: 0, x: reduceMotion ? 0 : 48, scale: reduceMotion ? 1 : 1.04 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -48, scale: 0.98 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, x: reduceMotion ? 0 : -48, scale: reduceMotion ? 1 : 0.98 }}
+            transition={{ duration: slideDuration, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 h-full w-full object-cover"
           />
         </AnimatePresence>
@@ -100,10 +97,10 @@ export function HeroPhotoCarousel() {
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
+            exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
+            transition={{ duration: reduceMotion ? 0 : 0.35 }}
           >
             <p className="text-base font-bold text-slate-900 md:text-lg">{slide.caption}</p>
             <p className="mt-1 text-sm leading-relaxed text-slate-600 md:text-[0.95rem]">
