@@ -10,28 +10,24 @@ const NAV_ITEMS = [
 
 export function HomeHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#009881]/15 bg-white/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-5 py-4 md:px-8 lg:flex-nowrap lg:gap-8">
-        <Link href="/" className="group shrink-0">
+    <header className="home-header sticky top-0 z-40 border-b border-[#009881]/15 bg-white/90 backdrop-blur-xl">
+      <div className="home-header-inner mx-auto max-w-7xl px-3 py-2 md:px-8 md:py-3.5 lg:py-4">
+        <Link href="/" className="home-header-brand group block max-w-full shrink-0">
           <span
-            className={`${paperlogyBlack.className} block text-[1.4rem] leading-tight tracking-tight text-slate-900 transition-opacity group-hover:opacity-90 md:text-[1.55rem] lg:text-[1.7rem]`}
+            className={`${paperlogyBlack.className} home-header-title block leading-tight tracking-tight text-slate-900 transition-opacity group-hover:opacity-90`}
           >
             <span className="text-[#009881]">한국국토정보공사</span>
-            <span className="ml-1.5 text-slate-900">교육신청 플랫폼</span>
+            <span className="text-slate-900"> 교육신청 플랫폼</span>
           </span>
         </Link>
 
-        <nav className="flex flex-1 flex-wrap items-center justify-end gap-2 md:gap-3">
+        <nav className="home-header-nav" aria-label="주요 메뉴">
           {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="home-nav-link rounded-full px-4 py-2.5 text-[0.95rem] font-semibold text-slate-700 md:px-5 md:py-3 md:text-base"
-            >
+            <Link key={item.href} href={item.href} className="home-nav-link shrink-0">
               {item.label}
             </Link>
           ))}
-          <Link href="/apply/info" className="home-nav-cta rounded-full px-5 py-2.5 text-[0.95rem] font-bold text-white md:px-6 md:py-3 md:text-base">
+          <Link href="/apply/info" className="home-nav-cta shrink-0">
             교육 신청하기
           </Link>
         </nav>
